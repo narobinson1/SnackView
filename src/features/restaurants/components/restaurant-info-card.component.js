@@ -1,8 +1,9 @@
 import styled from "styled-components/native";
-import { Text, Image, View } from "react-native";
+import { Image, View } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
+import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer.component";
 import star from "../../../assets/star";
 import open from "../../../assets/open";
@@ -48,6 +49,11 @@ const Info = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+const Icon = styled.Image`
+  width: 15px;
+  height: 15px;
+`;
+
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Spme Restaurant",
@@ -76,12 +82,14 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Rating>
           <SectionEnd>
             {isClosedTemporarily && (
-              <SvgXml xml={star} width={20} height={20} />
+              <Text variant="caption" color="text.error">
+                CLOSED TEMPORARILY
+              </Text>
             )}
             <Spacer variant="left.large" />
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             <Spacer variant="left.large" />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            <Icon source={{ uri: icon }} />
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
