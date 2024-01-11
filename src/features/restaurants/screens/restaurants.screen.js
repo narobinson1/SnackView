@@ -9,7 +9,7 @@ import {
   Platform,
 } from "react-native";
 
-import { RestaurantInfo } from "../components/restaurant-info.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 export const RestaurantsScreen = () => (
   <SafeAreaView style={styles.container}>
@@ -17,7 +17,7 @@ export const RestaurantsScreen = () => (
       <Searchbar />
     </View>
     <View style={styles.list}>
-      <RestaurantInfo></RestaurantInfo>
+      <RestaurantInfoCard />
     </View>
   </SafeAreaView>
 );
