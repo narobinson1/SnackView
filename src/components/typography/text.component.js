@@ -1,49 +1,48 @@
 import styled from "styled-components/native";
-import { variant, color } from "styled-system";
 
-const defaultTextStyles = {
-  fontFamily: "body",
-  fontWeight: "regular",
-  color: "text.primary",
-  flexWrap: "wrap",
-  marginTop: 0,
-  marginBottom: 0,
+const defaultTextStyles = (theme) => `
+   font-family: ${theme.fonts.body};
+   font-weight: ${theme.fontWeights.regular};
+   color: ${theme.colors.text.primary};
+   flex-wrap: wrap;
+   margin-top: 0px;
+   margin-bottom: 0px;
+ `;
+
+const body = (theme) => `
+     font-size: ${theme.fontSizes.body};
+ `;
+
+const hint = (theme) => `
+     font-size: ${theme.fontSizes.body};
+ `;
+
+const error = (theme) => `
+     color: ${theme.colors.text.error};
+ `;
+
+const caption = (theme) => `
+     font-size: ${theme.fontSizes.caption};
+     font-weight: ${theme.fontWeights.bold};
+ `;
+
+const label = (theme) => `
+     font-family: ${theme.fonts.heading};
+     font-size: ${theme.fontSizes.body};
+     font-weight: ${theme.fontWeights.medium};
+ `;
+
+const variants = {
+  body,
+  label,
+  caption,
+  error,
+  hint,
 };
 
-const textVariants = variant({
-  variants: {
-    body: {
-      ...defaultTextStyles,
-      fontSize: "body",
-    },
-    caption: {
-      ...defaultTextStyles,
-      fontSize: "caption",
-      fontWeight: "bold",
-    },
-    error: {
-      ...defaultTextStyles,
-      fontSize: "caption",
-      color: "text.error",
-    },
-    hint: {
-      ...defaultTextStyles,
-      fontSize: "body",
-      color: "text.secondary",
-    },
-    label: {
-      ...defaultTextStyles,
-      fontFamily: "heading",
-      fontSize: "body",
-      fontWeight: "medium",
-    },
-  },
-});
-
 export const Text = styled.Text`
-  ${textVariants};
-  ${({ center = false }) => (center ? "text-align: center;" : "")}
-  ${color};
+  ${({ theme }) => defaultTextStyles(theme)}
+  ${({ variant, theme }) => variants[variant](theme)}
 `;
 
 Text.defaultProps = {
