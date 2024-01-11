@@ -18,6 +18,21 @@ import { SafeArea } from "./src/components/utility/safe-area.component";
 
 const Tab = createBottomTabNavigator();
 
+const TAB_ICON = {
+  Restaurants: "md-restaurant",
+  Map: "md-map",
+  Settings: "md-settings",
+};
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
+
 const Settings = () => {
   <SafeArea>
     <Text>Settings</Text>
@@ -48,21 +63,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <NavigationContainer>
           <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ color, size }) => {
-                let iconName;
-
-                if (route.name === "Restaurants") {
-                  iconName = "md-restaurant";
-                } else if (route.name === "Settings") {
-                  iconName = "md-settings";
-                } else if (route.name === "Map") {
-                  iconName = "md-map";
-                }
-                console.log(iconName);
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-            })}
+            screenOptions={createScreenOptions}
             tabBarOptions={{
               activeTintColor: "tomato",
               inactiveTintColor: "gray",
