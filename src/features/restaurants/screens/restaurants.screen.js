@@ -9,13 +9,15 @@ import {
   Platform,
 } from "react-native";
 
+import { RestaurantInfo } from "../components/restaurant-info.component";
+
 export const RestaurantsScreen = () => (
   <SafeAreaView style={styles.container}>
     <View style={styles.search}>
       <Searchbar />
     </View>
     <View style={styles.list}>
-      <Text>list</Text>
+      <RestaurantInfo></RestaurantInfo>
     </View>
   </SafeAreaView>
 );
