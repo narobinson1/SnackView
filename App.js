@@ -1,6 +1,10 @@
 import { StatusBar as ExpoStatusBar } from "react-native";
 import React from "react";
-import { Searchbar } from "react-native-paper";
+import { ThemeProvider } from "styled-components/native";
+
+import { theme } from "./src/infrastructure/index";
+import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
+
 import {
   StatusBar,
   StyleSheet,
@@ -10,12 +14,12 @@ import {
   Platform,
 } from "react-native";
 
-import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
-
 export default function App() {
   return (
     <>
-      <RestaurantsScreen />
+      <ThemeProvider theme={theme}>
+        <RestaurantsScreen />
+      </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
   );
