@@ -1,5 +1,6 @@
 import React from "react";
 import { Searchbar } from "react-native-paper";
+import { FlatList } from "react-native";
 import styled from "styled-components/native";
 import {
   StatusBar,
@@ -10,6 +11,7 @@ import {
   Platform,
 } from "react-native";
 
+import { Spacer } from "../../../components/spacer.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 const SafeArea = styled(SafeAreaView)`
@@ -31,8 +33,15 @@ export const RestaurantsScreen = () => (
     <SearchContainer>
       <Searchbar />
     </SearchContainer>
-    <RestaurantListContainer>
-      <RestaurantInfoCard />
-    </RestaurantListContainer>
+    <FlatList
+      data={[{ name: 1 }, { name: 1 }, { name: 1 }]}
+      renderItem={() => (
+        <Spacer position="bottom" size="large">
+          <RestaurantInfoCard />
+        </Spacer>
+      )}
+      keyExtractor={(item) => item.name}
+      contentContainerStyle={{ padding: 16 }}
+    />
   </SafeArea>
 );
