@@ -21,8 +21,11 @@ import { RestaurantsContextProvider } from "./src/services/restaurants/restauran
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+import { CartContextProvider } from "./src/services/cart/cart.context";
+
 import { Navigation } from "./src/infrastructure/navigation/index";
 import { AuthenticationContext } from "./src/services/authentication/authentication.context";
+import { Card } from "react-native-paper";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfDYprIjCEhdt6ozbYem5glIo07R9pSS0",
@@ -73,7 +76,9 @@ export default function App() {
           <FavouritesContextProvider>
             <LocationContextProvider>
               <RestaurantsContextProvider>
-                <Navigation />
+                <CartContextProvider>
+                  <Navigation />
+                </CartContextProvider>
               </RestaurantsContextProvider>
             </LocationContextProvider>
           </FavouritesContextProvider>
