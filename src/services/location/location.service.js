@@ -1,6 +1,12 @@
 import camelize from "camelize";
 
-export const locationRequest = (searchTerm) => {};
+export const locationRequest = (searchTerm) => {
+  return fetch(
+    `http://localhost:5001/snackview-dc76a/us-central1/geocode?city=${searchTerm}`
+  ).then((res) => {
+    return res.json();
+  });
+};
 
 export const locationTransform = (result) => {
   const formattedResponse = camelize(result);
