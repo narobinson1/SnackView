@@ -12,7 +12,7 @@ import {
   Platform,
 } from "react-native";
 
-import { Spacer } from "../../../components/spacer.component";
+import { Spacer } from "../../../components/utility/spacer.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";

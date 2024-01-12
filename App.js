@@ -16,6 +16,7 @@ import { SafeArea } from "./src/components/utility/safe-area.component";
 import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { Navigation } from "./src/infrastructure/navigation/index";
 
 const TAB_ICON = {
@@ -52,11 +53,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
