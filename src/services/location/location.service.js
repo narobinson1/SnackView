@@ -1,4 +1,5 @@
 import camelize from "camelize";
+import { host } from "../../utils/env";
 
 export const locationRequest = (searchTerm) => {
   return fetch(

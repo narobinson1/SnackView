@@ -1,5 +1,6 @@
 import { mocks, mockImages } from "./mock";
 import camelize from "camelize";
+import { host } from "../../utils/env";
 
 export const restaurantsRequest = (location) => {
   return fetch(
