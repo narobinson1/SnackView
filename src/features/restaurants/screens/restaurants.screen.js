@@ -7,7 +7,6 @@ import {
   StatusBar,
   StyleSheet,
   SafeAreaView,
-  Text,
   View,
   Platform,
 } from "react-native";

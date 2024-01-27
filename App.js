@@ -24,8 +24,10 @@ import { AuthenticationContextProvider } from "./src/services/authentication/aut
 import { CartContextProvider } from "./src/services/cart/cart.context";
 
 import { Navigation } from "./src/infrastructure/navigation/index";
-import { AuthenticationContext } from "./src/services/authentication/authentication.context";
 import { Card } from "react-native-paper";
+
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfDYprIjCEhdt6ozbYem5glIo07R9pSS0",
@@ -36,8 +38,10 @@ const firebaseConfig = {
   appId: "1:890396719394:ios:a7f14a5d29c17638310d7b",
 };
 
-initializeApp(firebaseConfig);
-
+const app = initializeApp(firebaseConfig);
+initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
 const TAB_ICON = {
   Restaurants: "md-restaurant",
   Map: "md-map",

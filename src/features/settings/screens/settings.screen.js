@@ -10,10 +10,22 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 import { FavouritesScreen } from "./favourites.screen";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+const TransparentSafeArea = styled(SafeArea)`
+  background-color: transparent;
+`;
+const SettingsBackground = styled.ImageBackground.attrs({
+  source: require("../../../assets/home_bg.jpg"),
+  opacity: 0.2,
+})`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+`;
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
 `;
 const AvatarContainer = styled.View`
+  padding: ${(props) => props.theme.space[4]};
   align-items: center;
 `;
 
@@ -27,30 +39,34 @@ export const SettingsScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeArea>
-      <AvatarContainer>
-        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
-          <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
-        </TouchableOpacity>
-        <Spacer position="top" size="large">
-          <Text variant="label">{user.email}</Text>
-        </Spacer>
-      </AvatarContainer>
-      <List.Section>
-        <SettingsItem
-          style={{ padding: 16 }}
-          title="Favourites"
-          description="View your favourites"
-          left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-          onPress={() => navigation.navigate("Favourites")}
-        />
-        <SettingsItem
-          style={{ padding: 16 }}
-          title="Logout"
-          left={(props) => <List.Icon {...props} color="black" icon="door" />}
-          onPress={onLogout}
-        />
-      </List.Section>
-    </SafeArea>
+    <SettingsBackground>
+      <TransparentSafeArea>
+        <AvatarContainer>
+          <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+            <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+          </TouchableOpacity>
+          <Spacer position="top" size="large">
+            <Text variant="label">{user.email}</Text>
+          </Spacer>
+        </AvatarContainer>
+        <List.Section>
+          <SettingsItem
+            style={{ padding: 16 }}
+            title="Favourites"
+            description="View your favourites"
+            left={(props) => (
+              <List.Icon {...props} color="black" icon="heart" />
+            )}
+            onPress={() => navigation.navigate("Favourites")}
+          />
+          <SettingsItem
+            style={{ padding: 16 }}
+            title="Logout"
+            left={(props) => <List.Icon {...props} color="black" icon="door" />}
+            onPress={onLogout}
+          />
+        </List.Section>
+      </TransparentSafeArea>
+    </SettingsBackground>
   );
 };

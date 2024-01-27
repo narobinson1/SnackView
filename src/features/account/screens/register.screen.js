@@ -21,8 +21,8 @@ export const RegisterScreen = ({ navigation }) => {
   const { onRegister, isLoading, error } = useContext(AuthenticationContext);
   return (
     <AccountBackground>
-      <Title>SnackView</Title>
       <AccountContainer>
+        <Title>SnackView</Title>
         <AuthInput
           label="E-mail"
           value={email}

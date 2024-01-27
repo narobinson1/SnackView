@@ -1,13 +1,11 @@
-import { mocks, mockImages } from "./mock";
+// import { mocks, mockImages } from "./mock";
 import camelize from "camelize";
-import { host, isMock } from "../../utils/env";
+import { host } from "../../utils/env";
 
 export const restaurantsRequest = (location) => {
-  return fetch(`${host}/placesNearby?location=${location}&mock=${isMock}`).then(
-    (res) => {
-      return res.json();
-    }
-  );
+  return fetch(`${host}/placesNearby?location=${location}`).then((res) => {
+    return res.json();
+  });
 };
 
 export const restaurantsTransform = ({ results = [] }) => {

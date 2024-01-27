@@ -24,8 +24,8 @@ export const AccountScreen = ({ navigation }) => {
           source={require("../../../assets/watermelon.json")}
         />
       </AnimationWrapper>
-      <Title>SnackView</Title>
       <AccountContainer>
+        <Title>SnackView</Title>
         <AuthButton
           icon="lock-open-outline"
           mode="contained"

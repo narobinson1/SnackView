@@ -1,9 +1,8 @@
-import React, { useState. useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ScrollView } from "react-native";
 import { List } from "react-native-paper";
 
 import { Spacer } from "../../../components/utility/spacer.component";
-import { ScrollView } from "react-native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -69,12 +68,15 @@ export const RestaurantsDetailScreen = ({ navigation, route }) => {
       </ScrollView>
       <Spacer position="left" size="large">
         <OrderButton
-          icon="cash-usd"
+          icon="cash"
           mode="contained"
           onPress={() => {
             addToCart({ item: "special", price: 1299 }, restaurant);
-          }}>Order Special Only 12.99!</OrderButton>
-        </Spacer>
+          }}
+        >
+          Order Special Only 12.99!
+        </OrderButton>
+      </Spacer>
     </SafeArea>
   );
 };
