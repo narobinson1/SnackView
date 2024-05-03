@@ -1,4 +1,4 @@
-# SnackView - A React Native mobile app
+# SnackView
 
 Instructions for installation:
 1. Download code base to a local folder
